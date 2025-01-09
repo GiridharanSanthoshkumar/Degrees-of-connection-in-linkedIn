@@ -31,7 +31,7 @@ social_graph= {
 
 def bidir_search(source,target):
     if source == target:
-        return 0  # Same node, 0 hops
+        return 0  
     visited1=set()
     visited2=set()
     queue1=deque()
@@ -44,35 +44,27 @@ def bidir_search(source,target):
 
     while len(queue1)>0 or len(queue2)>0:
 
-        #traverse the start node subgraph
+        
         for i in range(len(queue1)):
             cur_node=queue1.popleft()
             if(cur_node in visited2):
                     return levelcount1+levelcount2
             if(cur_node not in visited1):
-                
-                    #put the curr node in visited list
                     visited1.add(cur_node)
-                    #add their neigbors
                     for node in social_graph[cur_node]:
                         if(node not in visited1):
-                            #expand 
                             queue1.append(node)
         
         levelcount1+=1
-        #traverse the target node subgraph
-        #traverse the start node subgraph
+        
         for i in range(len(queue2)):
             cur_node=queue2.popleft()
             if(cur_node in visited1):
                 return levelcount1+levelcount2
             if(cur_node not in visited2):
-                    #put the curr node in visited list
-                    visited2.add(cur_node)
-                    #add their neigbors
+                    visited2.add(cur_node) 
                     for node in social_graph[cur_node]:
-                        if(node not in visited2):
-                            #expand 
+                        if(node not in visited2):  
                             queue2.append(node)
 
         levelcount2+=1

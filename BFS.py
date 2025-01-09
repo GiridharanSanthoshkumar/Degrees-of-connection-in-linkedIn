@@ -1,8 +1,4 @@
-
-
 from collections import deque
-
-
 social_graph= {
     'Giri': ['Sri', 'Thoufeeq', 'Bala'],
     'Sri': ['Giri', 'Mega', 'Karthi'],
@@ -15,17 +11,11 @@ social_graph= {
     'Vijay': ['Bala', 'Karthi', 'Aadhi'],
     'Aadhi': ['Bala', 'Aravinth', 'Vijay']
 }
-
-
-
 def distance_between_two_users(user1,user2):
    
     visited=set()
     queue = deque()
-
     queue.append(user1)
-    
-    
     count=0
     while(len(queue)>0):
         for i in range(len(queue)):
